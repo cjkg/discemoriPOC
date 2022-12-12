@@ -1,14 +1,47 @@
+
 <p style="color: green"><%= notice %></p>
+<div class="flex flex-col space-y-10 ...">
+  <p class="text-4xl">Books</p>
 
-<h1>Books</h1>
+  <div id="books">
+    <table class="text-left w-screen">
+      <thead class="bg-blue-500 flex text-white w-full">
+      <tr class="flex w-full mb-1">
+        <th class="p-4 w-1/5"><%= link_to "First", :sort => "author_first"%> </th>
+        <th class="p-4 w-1/5"><%= link_to "Last", :sort => "author_last"%></th>
+        <th class="p-4 w-1/5"><%= link_to "Title", :sort => "title"%></th>
+        <th class="p-4 w-1/5"><%= link_to "Pages", :sort => "pages"%></th>
+        <th class="p-4 w-1/5"></th>
+      </tr>
+      </thead>
+      <tbody class="bg-grey-light flex flex-col items-center justify-between overflow-y-scroll w-full" style="height: 50vh;">
+      <% @books.each do |book| %>
+      <tr class="flex w-full mb-4">
+        <td class="flex w-1/5 mb-4"><%= book.author_first %></td>
+        <td class="flex w-1/5 mb-4"><%= book.author_last %></td>
+        <td class="flex w-1/5 mb-4"><%= book.title %></td>
+        <td class="flex w-1/5 mb-4"><%= book.pages %></td>
+        <td class="flex w-1/5 mb-4 ">
+          <%= button_to "Display", {:controller => :books,
+                                   :action => 'show', :id => book.id }, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full", :method => :get %>
+          &nbsp;&nbsp;
+          <%= button_to "Remove", {:controller => :books,
+                                   :action => 'destroy', :id => book.id }, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full", :method => :delete %>
+          &nbsp;&nbsp;
+          <%= button_to "Update", {:controller => :books,
+                                   :action => 'edit', :id => book.id }, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full", :method => :get %>
+        </td>
+      </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<div id="books">
-  <% @books.each do |book| %>
-    <%= render book %>
-    <p>
-      <%= link_to "Show this book", book %>
-    </p>
-  <% end %>
+  <div>
+    <form method="get" action="/books/new" class="button_to">
+      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
+        Add a Book
+      </button>
+    </form>
+  </div>
 </div>
-
-<%= link_to "New book", new_book_path %>

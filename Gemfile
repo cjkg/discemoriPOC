@@ -12,6 +12,7 @@ gem "stimulus-rails",  "1.0.4"
 gem "jbuilder",        "2.11.5"
 gem "puma",            "5.6.4"
 gem "bootsnap",        "1.12.0", require: false
+gem "font-awesome-sass", "~> 6.2.1"
 
 group :development, :test do
   gem "sqlite3", "1.4.2"
@@ -36,3 +37,4 @@ end
 # Uncomment the following line if you're running Rails
 # on a native Windows system:
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tailwindcss-rails", "~> 2.0"
