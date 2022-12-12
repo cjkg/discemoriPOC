@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author_last: MyString
+  author_first: MyString
+  title: MyString
+  pages: 1
+  finish_date: 2022-12-11 22:23:32
+
+two:
+  author_last: MyString
+  author_first: MyString
+  title: MyString
+  pages: 1
+  finish_date: 2022-12-11 22:23:32
